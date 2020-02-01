@@ -13,7 +13,7 @@ const BigNumber = require("bignumber.js")
 class Utils {
   restURL: string
   constructor(restURL: string) {
-    this.restURL = restURL
+    this.restURL = "https://rest.zslp.org/v2/"
   }
 
   async list(id?: string | string[]): Promise<Object | Array<Object>> {

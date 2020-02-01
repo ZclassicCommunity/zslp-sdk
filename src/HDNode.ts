@@ -15,11 +15,11 @@ class HDNode extends BITBOXHDNode {
   }
 
   toCashAddress(hdNode: any, regtest = false): string {
-    return bitbox.HDNode.toCashAddress(hdNode, regtest)
+    return bitbox.HDNode.toLegacyAddress(hdNode)
   }
 
   toSLPAddress(hdNode: any): string {
-    const cashAddr = bitbox.HDNode.toCashAddress(hdNode)
+    const cashAddr = bitbox.HDNode.toLegacyAddress(hdNode)
     return utils.toSlpAddress(cashAddr)
   }
 }

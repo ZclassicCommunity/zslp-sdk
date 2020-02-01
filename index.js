@@ -23,7 +23,7 @@ program
   )
   .option(
     "-r, --restURL <restURL>",
-    "The rest URL to use. default: https://trest.bitcoin.com/v2/"
+    "The rest URL to use. default: https://trest.zslp.org/v2/"
   )
   .option(
     "-e, --environment <environment>",
@@ -39,7 +39,7 @@ program
     let config
     const environment = fetchOption("environment=development", config, options)
     const restURL = fetchOption(
-      "restURL=https://trest.bitcoin.com/v2/",
+      "restURL=https://trest.zslp.org/v2/",
       config,
       options
     )
