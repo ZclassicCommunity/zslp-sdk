@@ -301,8 +301,8 @@ class TokenType1 {
     let tmpBITBOX: any
 
     let restURL: string
-    if (network === "mainnet") restURL = "https://rest.bitcoin.com/v2/"
-    else restURL = "https://trest.bitcoin.com/v2/"
+    if (network === "mainnet") restURL = "https://rest.zslp.org/v2/"
+    else restURL = "https://trest.zslp.org/v2/"
 
     return new BITBOX({ restURL: restURL })
   }

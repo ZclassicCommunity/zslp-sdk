@@ -9,7 +9,7 @@ const utils = require("slpjs").Utils
 class ECPair extends BITBOXECPair {
   toSLPAddress(ecpair: any): string {
     const slpAddress: string = utils.toSlpAddress(
-      bitbox.ECPair.toCashAddress(ecpair)
+      bitbox.ECPair.toLegacyAddress(ecpair)
     )
     return slpAddress
   }
