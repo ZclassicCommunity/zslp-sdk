@@ -344,7 +344,7 @@ class TokenType1 {
     // validate bchChangeReceiverAddress format
     if (
       config.bchChangeReceiverAddress &&
-      !addy.isCashAddress(config.bchChangeReceiverAddress)
+      !addy.isLegacyAddress(config.bchChangeReceiverAddress)
     )
       throw Error("BCH Change Receiver Address must be cash address format")
 
