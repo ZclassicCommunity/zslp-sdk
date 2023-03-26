@@ -38,7 +38,7 @@
     "axios": "0.19.0",
     "babel-register": "^6.26.0",
     "bignumber.js": "^8.0.2",
-    "bitbox-sdk": "ZSLP/bitbox-sdk.git#fix/address_transactions_pagination",
+    "bitbox-sdk": "ZclassicCommunity/bitbox-sdk.git#0c4abf83847f56fd4ce4a4a645d53f95dc0071c0",
     "chalk": "^2.3.0",
     "clear": "0.1.0",
     "commander": "^2.13.0",
