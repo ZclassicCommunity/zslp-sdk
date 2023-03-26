@@ -2,6 +2,7 @@
 import axios from "axios"
 
 import { BITBOX } from "bitbox-sdk"
+import { IBulkTransaction } from "./interfaces/SLPInterfaces"
 const bitbox = new BITBOX()
 const BITBOXUtil = require("bitbox-sdk").Util
 
@@ -121,15 +122,30 @@ class Util extends BITBOXUtil {
     }
   }
 
-  async tokenStats(tokenId: string): Promise<Object> {
-    const path: string = `${this.restURL}slp/tokenStats/${tokenId}`
+  async tokenStats(tokenId: string | string[]): Promise<Object> {
+    let path: string;
+    let method: string;
+    if (typeof tokenId === "string") {
+      method = "get";
+      path = `${this.restURL}slp/tokenStats/${tokenId}`;
+    } else if (typeof tokenId === "object") {
+      method = "post";
+      path = `${this.restURL}slp/tokenStats`;
+    }
 
     try {
-      const response = await axios.get(path)
-      return response.data
+      let response: any;
+      if (method === "get") {
+        response = await axios.get(path);
+      } else {
+        response = await axios.post(path, {
+          tokenIds: tokenId
+        });
+      }
+      return response.data;
     } catch (error) {
-      if (error.response && error.response.data) throw error.response.data
-      throw error
+      if (error.response && error.response.data) throw error.response.data;
+      throw error;
     }
   }
 
@@ -145,6 +161,20 @@ class Util extends BITBOXUtil {
       throw error
     }
   }
+
+  // Bulk SLP transactions by tokenId and address.
+  async bulkTransactions(data: Array<IBulkTransaction>): Promise<Object> {
+    const path: string = `${this.restURL}slp/transactions`;
+  
+    try {
+      const response = await axios.post(path, data);
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data) throw error.response.data;
+      throw error;
+    }
+  }
+
 
   async burnTotal(transactionId: string): Promise<Object> {
     const path: string = `${this.restURL}slp/burnTotal/${transactionId}`
